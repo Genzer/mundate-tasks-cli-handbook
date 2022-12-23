@@ -33,3 +33,53 @@ $> TZ=Pacific/Auckland date -d '@1671704790.281809' --rfc-3339=seconds
 ```
 
 Alternative: https://www.epochconverter.com/.
+
+## JSON Web Token (JWT)
+
+The CLI [`jwt](https://github.com/mike-engel/jwt-cli) is wonderful for working with JWT.
+
+### Inspect a JWT
+
+```bash
+$>  jwt decode <TOKEN>
+
+$> jwt decode eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJqb2huLndpY2siLCJpYXQiOjE2NzE3NzcxMTksImlzcyI6IlRoZSBDb250aW5lbnRhbCIsImxldmVsIjoiZWxpdGUifQ.tEauOrvhHPQYVLBvpyXP0lfQkjKl4d3TZOmAQt-GYL8
+Token header
+------------
+{
+  "typ": "JWT",
+  "alg": "HS256"
+}
+
+Token claims
+------------
+{
+  "aud": "john.wick",
+  "iat": 1671777147,
+  "iss": "The Continental",
+  "level": "elite"
+}
+```
+
+I use Vim for editing text. More often, I have a encoded JWT opened on one of the buffer and I use this to decode it into the current buffer
+
+```vim
+:%! jwt decode --json -
+```
+
+and the result is
+
+```json
+{
+  "header": {
+    "typ": "JWT",
+    "alg": "HS256"
+  },
+  "payload": {
+    "aud": "john.wick",
+    "iat": 1671777172,
+    "iss": "The Continental",
+    "level": "elite"
+  }
+}
+```
