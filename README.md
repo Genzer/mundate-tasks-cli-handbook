@@ -36,7 +36,7 @@ Alternative: https://www.epochconverter.com/.
 
 ## JSON Web Token (JWT)
 
-The CLI [`jwt](https://github.com/mike-engel/jwt-cli) is wonderful for working with JWT.
+The CLI [`jwt`](https://github.com/mike-engel/jwt-cli) is wonderful for working with JWT.
 
 ### Inspect a JWT
 
